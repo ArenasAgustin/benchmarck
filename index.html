@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <script type="module" src="index.js"></script>
+
+    <title>11 - JS Perf Benchmark</title>
+  </head>
+
+  <body>
+    <main class="main-container">
+      <div class="test-container">
+        <h2>Global</h2>
+
+        <textarea id="global" class="code" rows="1">
+const data = [...Array(1000).keys()]</textarea
+        >
+
+        <h2>Test cases</h2>
+
+        <div class="test-cases">
+          <button class="add-button button">+</button>
+
+          <article class="test-case" data-id="1">
+            <header>
+              <span class="test-id">1</span>
+              <span class="ops"></span>
+
+              <div class="button-container">
+                <button class="delete-button button">X</button>
+                <button class="copy-button button">0</button>
+              </div>
+            </header>
+
+            <textarea class="code" rows="1">data.find(x => x == 100)</textarea>
+          </article>
+
+          <article class="test-case" data-id="2">
+            <header>
+              <span class="test-id">2</span>
+              <span class="ops"></span>
+
+              <div class="button-container">
+                <button class="delete-button button">X</button>
+                <button class="copy-button button">0</button>
+              </div>
+            </header>
+
+            <textarea class="code" rows="1">data.find(x => x == 200)</textarea>
+          </article>
+
+          <article class="test-case" data-id="3">
+            <header>
+              <span class="test-id">3</span>
+              <span class="ops"></span>
+
+              <div class="button-container">
+                <button class="delete-button button">X</button>
+                <button class="copy-button button">0</button>
+              </div>
+            </header>
+
+            <textarea class="code" rows="1">data.find(x => x == 400)</textarea>
+          </article>
+
+          <article class="test-case" data-id="4">
+            <header>
+              <span class="test-id">4</span>
+              <span class="ops"></span>
+
+              <div class="button-container">
+                <button class="delete-button button">X</button>
+                <button class="copy-button button">0</button>
+              </div>
+            </header>
+
+            <textarea class="code" rows="1">data.find(x => x == 800)</textarea>
+          </article>
+        </div>
+
+        <button class="send-button button">Benchmark code! 🚀</button>
+      </div>
+
+      <aside class="chart-container">
+        <svg class="chart" viewBox="0 0 200 300">
+          <rect
+            class="bar"
+            data-id="1"
+            x="20"
+            y="-300"
+            width="2"
+            height="300"
+            fill="green"
+          ></rect>
+          <rect
+            class="bar"
+            data-id="2"
+            x="70"
+            y="-300"
+            width="2"
+            height="50"
+            fill="yellow"
+          ></rect>
+          <rect
+            class="bar"
+            data-id="3"
+            x="120"
+            y="-300"
+            width="2"
+            height="80"
+            fill="orange"
+          ></rect>
+          <rect
+            class="bar"
+            data-id="4"
+            x="170"
+            y="-300"
+            width="2"
+            height="100"
+            fill="red"
+          ></rect>
+        </svg>
+
+        <div class="percentages">
+          <span class="percentage" data-id="1">100%</span>
+          <span class="percentage" data-id="2">40%</span>
+          <span class="percentage" data-id="3">60%</span>
+          <span class="percentage" data-id="4">80%</span>
+        </div>
+      </aside>
+    </main>
+  </body>
+</html>
