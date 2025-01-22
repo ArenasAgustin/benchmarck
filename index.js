@@ -3,9 +3,36 @@ const $globalCode = document.querySelector("#global");
 let $bars = document.querySelectorAll(".bar");
 let $percentages = document.querySelectorAll(".percentage");
 
-// Constants
+// Variables
 const COLORS = ["green", "yellow", "orange", "red", "purple"];
 let testCaseCounter = document.querySelectorAll(".test-case").length;
+
+/**
+ * Generates a color in the gradient from green to red based on a given ratio.
+ * @param {number} ratio - A value between 0 (green) and 1 (red).
+ * @returns {string} - The interpolated color in RGB format.
+ */
+function getGradientColor(ratio) {
+  let startColor, endColor;
+
+  if (ratio <= 0.5) {
+    // Green to Yellow
+    startColor = [0, 255, 0]; // Green
+    endColor = [255, 255, 0]; // Yellow
+    ratio *= 2; // Scale to [0, 1] for this range
+  } else {
+    // Yellow to Red
+    startColor = [255, 255, 0]; // Yellow
+    endColor = [255, 0, 0]; // Red
+    ratio = (ratio - 0.5) * 2; // Scale to [0, 1] for this range
+  }
+
+  const r = Math.round(startColor[0] + (endColor[0] - startColor[0]) * ratio);
+  const g = Math.round(startColor[1] + (endColor[1] - startColor[1]) * ratio);
+  const b = Math.round(startColor[2] + (endColor[2] - startColor[2]) * ratio);
+
+  return `rgb(${r}, ${g}, ${b})`;
+}
 
 /**
  * Runs a test case using a Web Worker and returns the result.
@@ -49,16 +76,12 @@ async function runTestCases() {
   const results = await Promise.all(promises);
   const maxOps = Math.max(...results);
 
-  const sortedResults = results
-    .map((result, index) => ({ result, index }))
-    .sort((a, b) => b.result - a.result);
-
   results.forEach((result, index) => {
     const bar = $bars[index];
     const percentage = $percentages[index];
 
-    const indexColor = sortedResults.findIndex((x) => x.index === index);
-    const color = COLORS[indexColor];
+    const ratio = index / (results.length - 1);
+    const color = getGradientColor(ratio);
 
     const height = (result / maxOps) * 300;
     bar.setAttribute("height", height);
