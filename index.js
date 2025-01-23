@@ -126,7 +126,7 @@ function cloneAndResetElement(element, newId) {
 function updateGlobalCode() {
   $bars = document.querySelectorAll(".bar");
   $percentages = document.querySelectorAll(".percentage");
-  $indexes = document.querySelectorAll(".indexes");
+  $indexes = document.querySelectorAll(".index");
 }
 
 /**
@@ -204,6 +204,7 @@ function deleteTestCase(event) {
     const id = testCase.dataset.id;
     document.querySelector(`.bar[data-id="${id}"]`).remove();
     document.querySelector(`.percentage[data-id="${id}"]`).remove();
+    document.querySelector(`.index[data-id="${id}"]`).remove();
 
     testCaseCounter--;
     updateGlobalCode();
