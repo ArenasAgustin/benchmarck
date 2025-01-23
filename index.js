@@ -54,7 +54,7 @@ async function runTest({ code, data }) {
  * Executes all test cases, updates the chart, and displays the results.
  */
 async function runTestCases() {
-  const $testCases = document.querySelectorAll(".test-case");
+  const $testCases = document.querySelectorAll(".test-case:not(.global)");
 
   $bars.forEach((bar) => bar.setAttribute("height", 0));
   $percentages.forEach((percentage) => (percentage.textContent = ""));
@@ -160,6 +160,16 @@ function addTestCase() {
   newTestCase.querySelector(".code").value = "";
   newTestCase.querySelector(".ops").textContent = "0 ops/s";
 
+  newTestCase
+    .querySelector(".delete-button")
+    .addEventListener("click", deleteTestCase);
+  newTestCase
+    .querySelector(".copy-button")
+    .addEventListener("click", copyTestCase);
+  newTestCase
+    .querySelector(".clear-button")
+    .addEventListener("click", clearTestCase);
+
   lastTestCase.after(newTestCase);
 
   const deleteButton = newTestCase.querySelector(".delete-button");
@@ -183,16 +193,18 @@ function addTestCase() {
  * @param {Event} event - The click event triggered by the delete button.
  */
 function deleteTestCase(event) {
-  const testCase = event.target.closest(".test-case");
-  testCase.remove();
+  if (testCaseCounter > 1) {
+    const testCase = event.target.closest(".test-case");
+    testCase.remove();
 
-  const id = testCase.dataset.id;
-  document.querySelector(`.bar[data-id="${id}"]`).remove();
-  document.querySelector(`.percentage[data-id="${id}"]`).remove();
+    const id = testCase.dataset.id;
+    document.querySelector(`.bar[data-id="${id}"]`).remove();
+    document.querySelector(`.percentage[data-id="${id}"]`).remove();
 
-  testCaseCounter--;
-  updateGlobalCode();
-  adjustChartBars();
+    testCaseCounter--;
+    updateGlobalCode();
+    adjustChartBars();
+  }
 }
 
 /**
@@ -205,19 +217,60 @@ function copyTestCase(event) {
   window.navigator.clipboard.writeText(codeText);
 }
 
+/**
+ * Clears all test cases and resets associated chart elements.
+ */
+function clearAllTestCases() {
+  document
+    .querySelectorAll(".test-case .code")
+    .forEach((input) => (input.value = ""));
+
+  $bars.forEach((bar) => {
+    bar.setAttribute("height", 0);
+    bar.setAttribute("fill", "#ccc");
+  });
+
+  $percentages.forEach((percentage) => (percentage.textContent = "0%"));
+}
+
+function clearTestCase(event) {
+  const testCase = event.target.closest(".test-case");
+  testCase.querySelector(".code").value = "";
+
+  const id = testCase.dataset.id;
+  const bar = document.querySelector(`.bar[data-id="${id}"]`);
+
+  bar.setAttribute("height", 0);
+  bar.setAttribute("fill", "#ccc");
+
+  document.querySelector(`.percentage[data-id="${id}"]`).textContent = "0%";
+}
+
 // Initialize test cases on page load
 runTestCases();
 
-// Re-run test cases when the send button is clicked
-document.querySelector(".send-button").addEventListener("click", runTestCases);
+// Re-run test cases when the run button is clicked
+document.querySelector(".run-button").addEventListener("click", runTestCases);
 
 // Attach the addTestCase function to the add button
 document.querySelector(".add-button").addEventListener("click", addTestCase);
 
 // Use event delegation for dynamic delete buttons
 document
-  .querySelector(".delete-button")
-  .addEventListener("click", deleteTestCase);
+  .querySelectorAll(".delete-button")
+  .forEach((button) => button.addEventListener("click", deleteTestCase));
 
 // Use event delegation for dynamic copy buttons
-document.querySelector(".copy-button").addEventListener("click", copyTestCase);
+document
+  .querySelectorAll(".copy-button")
+  .forEach((button) => button.addEventListener("click", copyTestCase));
+
+// Clear all test cases except the first one
+document
+  .querySelector(".clear-all-button")
+  .addEventListener("click", clearAllTestCases);
+
+// Clear a single test case
+document
+  .querySelectorAll(".clear-button")
+  .forEach((button) => button.addEventListener("click", clearTestCase));

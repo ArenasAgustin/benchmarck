@@ -14,14 +14,25 @@
       <div class="test-container">
         <h2>Global</h2>
 
-        <textarea id="global" class="code" rows="1">
+        <article class="test-case global" data-id="global">
+          <header>
+            <div class="button-container">
+              <button class="copy-button button">0</button>
+            </div>
+          </header>
+
+          <textarea id="global" class="code" rows="1">
 const data = [...Array(1000).keys()]</textarea
-        >
+          >
+        </article>
 
         <h2>Test cases</h2>
 
         <div class="test-cases">
-          <button class="add-button button">+</button>
+          <div class="button-container">
+            <button class="add-button button">Add test</button>
+            <button class="clear-all-button button">Clear tests</button>
+          </div>
 
           <article class="test-case" data-id="1">
             <header>
@@ -31,6 +42,7 @@ const data = [...Array(1000).keys()]</textarea
               <div class="button-container">
                 <button class="delete-button button">X</button>
                 <button class="copy-button button">0</button>
+                <button class="clear-button button">1</button>
               </div>
             </header>
 
@@ -45,6 +57,7 @@ const data = [...Array(1000).keys()]</textarea
               <div class="button-container">
                 <button class="delete-button button">X</button>
                 <button class="copy-button button">0</button>
+                <button class="clear-button button">1</button>
               </div>
             </header>
 
@@ -59,6 +72,7 @@ const data = [...Array(1000).keys()]</textarea
               <div class="button-container">
                 <button class="delete-button button">X</button>
                 <button class="copy-button button">0</button>
+                <button class="clear-button button">1</button>
               </div>
             </header>
 
@@ -73,6 +87,7 @@ const data = [...Array(1000).keys()]</textarea
               <div class="button-container">
                 <button class="delete-button button">X</button>
                 <button class="copy-button button">0</button>
+                <button class="clear-button button">1</button>
               </div>
             </header>
 
@@ -80,7 +95,7 @@ const data = [...Array(1000).keys()]</textarea
           </article>
         </div>
 
-        <button class="send-button button">Benchmark code! 🚀</button>
+        <button class="run-button button">Benchmark code!</button>
       </div>
 
       <aside class="chart-container">

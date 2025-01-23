@@ -113,7 +113,8 @@ body {
   margin-left: 3px;
 }
 
-.send-button,
+.clear-all-button,
+.run-button,
 .add-button {
   background: rgba(255, 255, 255, 0.3);
 
@@ -122,6 +123,7 @@ body {
   }
 }
 
+.clear-button,
 .delete-button,
 .copy-button {
   background: rgba(173, 173, 173, 0.3);
