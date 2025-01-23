@@ -4,7 +4,6 @@ let $bars = document.querySelectorAll(".bar");
 let $percentages = document.querySelectorAll(".percentage");
 
 // Variables
-const COLORS = ["green", "yellow", "orange", "red", "purple"];
 let testCaseCounter = document.querySelectorAll(".test-case").length;
 
 /**
