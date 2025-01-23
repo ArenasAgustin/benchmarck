@@ -76,11 +76,16 @@ async function runTestCases() {
   const results = await Promise.all(promises);
   const maxOps = Math.max(...results);
 
+  const sortedResults = results
+    .map((result, index) => ({ result, index }))
+    .sort((a, b) => b.result - a.result);
+
   results.forEach((result, index) => {
     const bar = $bars[index];
     const percentage = $percentages[index];
 
-    const ratio = index / (results.length - 1);
+    const ratio =
+      sortedResults.findIndex((x) => x.index === index) / (results.length - 1);
     const color = getGradientColor(ratio);
 
     const height = (result / maxOps) * 300;
