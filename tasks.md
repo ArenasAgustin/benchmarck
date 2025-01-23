@@ -7,6 +7,7 @@
 - [X] Agregar un boton para copiar las globales
 - [ ] Hacer que si se hace ctrl + enter, se ejecute el test
 - [ ] Hacer que si se hace ctrl + shift + enter, se agregue un nuevo test
-- [ ] Indicar mejor cual barra es de cual test con un id o algo
+- [X] Indicar mejor cual barra es de cual test con un id o algo
 - [ ] Separar mas los tests de los porcentajes
 - [X] Agregar limite para borrar, que quede minimo 1 test
+- [ ] Al borrar tiene que actualizar los ids de los test que quedan
