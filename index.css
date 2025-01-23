@@ -151,6 +151,7 @@ body {
     width: 2px;
   }
 
+  .indexes,
   .percentages {
     opacity: 0.5;
     display: flex;
@@ -159,5 +160,9 @@ body {
     gap: 32px;
     margin-top: 16px;
     width: 100%;
+  }
+
+  .indexes {
+    margin-bottom: 16px;
   }
 }

@@ -2,9 +2,12 @@
 const $globalCode = document.querySelector("#global");
 let $bars = document.querySelectorAll(".bar");
 let $percentages = document.querySelectorAll(".percentage");
+let $indexes = document.querySelectorAll(".index");
 
 // Variables
-let testCaseCounter = document.querySelectorAll(".test-case").length;
+let testCaseCounter = document.querySelectorAll(
+  ".test-case:not(.global)"
+).length;
 
 /**
  * Generates a color in the gradient from green to red based on a given ratio.
@@ -110,6 +113,8 @@ function cloneAndResetElement(element, newId) {
     newElement.setAttribute("height", 0);
   } else if (element.classList.contains("percentage")) {
     newElement.textContent = "0%";
+  } else if (element.classList.contains("index")) {
+    newElement.textContent = newId;
   }
 
   return newElement;
@@ -121,6 +126,7 @@ function cloneAndResetElement(element, newId) {
 function updateGlobalCode() {
   $bars = document.querySelectorAll(".bar");
   $percentages = document.querySelectorAll(".percentage");
+  $indexes = document.querySelectorAll(".indexes");
 }
 
 /**
@@ -138,11 +144,6 @@ function adjustChartBars() {
     const xPosition = index * (barWidth + barSpacing);
     bar.setAttribute("width", barWidth);
     bar.setAttribute("x", xPosition);
-  });
-
-  $percentages.forEach((percentage, index) => {
-    const xPosition = index * (barWidth + barSpacing) + barWidth / 2;
-    percentage.setAttribute("x", xPosition);
   });
 }
 
@@ -177,12 +178,15 @@ function addTestCase() {
 
   const lastBar = $bars[$bars.length - 1];
   const lastPercentage = $percentages[$percentages.length - 1];
+  const lastIndex = $indexes[$indexes.length - 1];
 
   const newBar = cloneAndResetElement(lastBar, testCaseCounter);
   const newPercentage = cloneAndResetElement(lastPercentage, testCaseCounter);
+  const newIndex = cloneAndResetElement(lastIndex, testCaseCounter);
 
   lastBar.after(newBar);
   lastPercentage.after(newPercentage);
+  lastIndex.after(newIndex);
 
   updateGlobalCode();
   adjustChartBars();
