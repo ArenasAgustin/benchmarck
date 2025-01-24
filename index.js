@@ -88,9 +88,8 @@ async function runTestCases() {
     const ratio =
       sortedResults.findIndex((x) => x.index === index) / (results.length - 1);
 
-    bar
-      .setAttribute("height", (result / maxOps) * 300)
-      .setAttribute("fill", getGradientColor(ratio));
+    bar.setAttribute("height", (result / maxOps) * 300);
+    bar.setAttribute("fill", getGradientColor(ratio));
     percentage.textContent = `${Math.round((result / maxOps) * 100)}%`;
   });
 }
@@ -136,9 +135,8 @@ function adjustChartBars() {
   const barWidth = (chartWidth - barSpacing * (totalBars - 1)) / totalBars;
 
   $bars.forEach((bar, index) => {
-    bar
-      .setAttribute("width", barWidth)
-      .setAttribute("x", index * (barWidth + barSpacing));
+    bar.setAttribute("width", barWidth);
+    bar.setAttribute("x", index * (barWidth + barSpacing));
   });
 }
 
@@ -159,10 +157,9 @@ function addTestCase() {
   newTestCase
     .querySelectorAll(".delete-button, .copy-button, .clear-button")
     .forEach((button) => {
-      button
-        .removeEventListener("click", deleteTestCase)
-        .removeEventListener("click", copyTestCase)
-        .removeEventListener("click", clearTestCase);
+      button.removeEventListener("click", deleteTestCase);
+      button.removeEventListener("click", copyTestCase);
+      button.removeEventListener("click", clearTestCase);
     });
 
   newTestCase
@@ -261,7 +258,8 @@ function clearAllTestCases() {
     .forEach((input) => (input.value = ""));
 
   $bars.forEach((bar) => {
-    bar.setAttribute("height", 0).setAttribute("fill", "#ccc");
+    bar.setAttribute("height", 0);
+    bar.setAttribute("fill", "#ccc");
   });
 
   $percentages.forEach((percentage) => (percentage.textContent = "0%"));
@@ -270,12 +268,13 @@ function clearAllTestCases() {
 function clearTestCase(event) {
   const testCase = event.target.closest(".test-case");
   const id = testCase.dataset.id;
-
+  const bar = document.querySelector(`.bar[data-id="${id}"]`);
+  
   testCase.querySelector(".code").value = "";
-  document
-    .querySelector(`.bar[data-id="${id}"]`)
-    .setAttribute("height", 0)
-    .setAttribute("fill", "#ccc");
+
+  bar.setAttribute("height", 0);
+  bar.setAttribute("fill", "#ccc");
+
   document.querySelector(`.percentage[data-id="${id}"]`).textContent = "0%";
 }
 

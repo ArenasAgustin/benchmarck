@@ -22,7 +22,7 @@
           </header>
 
           <textarea id="global" class="code" rows="1">
-const data = [...Array(1000).keys()]</textarea
+  const data = [...Array(1000).keys()]</textarea
           >
         </article>
 
@@ -78,21 +78,6 @@ const data = [...Array(1000).keys()]</textarea
 
             <textarea class="code" rows="1">data.find(x => x == 400)</textarea>
           </article>
-
-          <article class="test-case" data-id="4">
-            <header>
-              <span class="test-id">4</span>
-              <span class="ops"></span>
-
-              <div class="button-container">
-                <button class="delete-button button">X</button>
-                <button class="copy-button button">0</button>
-                <button class="clear-button button">1</button>
-              </div>
-            </header>
-
-            <textarea class="code" rows="1">data.find(x => x == 800)</textarea>
-          </article>
         </div>
 
         <button class="run-button button">Benchmark code!</button>
@@ -103,7 +88,6 @@ const data = [...Array(1000).keys()]</textarea
           <span class="index" data-id="1">1</span>
           <span class="index" data-id="2">2</span>
           <span class="index" data-id="3">3</span>
-          <span class="index" data-id="4">4</span>
         </div>
 
         <svg class="chart" viewBox="0 0 460 300">
@@ -119,7 +103,7 @@ const data = [...Array(1000).keys()]</textarea
           <rect
             class="bar"
             data-id="2"
-            x="143.75"
+            x="204.44444444444446"
             y="-300"
             width="1"
             height="50"
@@ -128,20 +112,11 @@ const data = [...Array(1000).keys()]</textarea
           <rect
             class="bar"
             data-id="3"
-            x="287.5"
+            x="408.8888888888889"
             y="-300"
             width="1"
             height="80"
             fill="orange"
-          ></rect>
-          <rect
-            class="bar"
-            data-id="4"
-            x="431.25"
-            y="-300"
-            width="1"
-            height="100"
-            fill="red"
           ></rect>
         </svg>
 
@@ -149,7 +124,6 @@ const data = [...Array(1000).keys()]</textarea
           <span class="percentage" data-id="1">100%</span>
           <span class="percentage" data-id="2">40%</span>
           <span class="percentage" data-id="3">60%</span>
-          <span class="percentage" data-id="4">80%</span>
         </div>
       </aside>
     </main>
