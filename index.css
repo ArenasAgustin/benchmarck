@@ -14,6 +14,7 @@ body {
   display: grid;
   place-content: center;
   min-height: 100vh;
+  width: 100%;
 }
 
 .main-container {
@@ -21,15 +22,16 @@ body {
   width: 100%;
   margin: 0 auto;
   display: flex;
-  gap: 80px;
+  gap: 32px;
   justify-content: center;
   flex-wrap: wrap;
+  flex-direction: row;
 
   .test-container,
   .chart-container {
     display: flex;
-    max-width: 100%;
-    width: 460px;
+    max-width: 400px;
+    width: 100%;
   }
 }
 
