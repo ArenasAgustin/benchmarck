@@ -131,12 +131,23 @@ function adjustChartBars() {
   const totalBars = $bars.length;
   const barSpacing = 460 / totalBars;
   const chartWidth = 460;
-
   const barWidth = (chartWidth - barSpacing * (totalBars - 1)) / totalBars;
 
   $bars.forEach((bar, index) => {
+    const barX = index * (barWidth + barSpacing);
+
     bar.setAttribute("width", barWidth);
-    bar.setAttribute("x", index * (barWidth + barSpacing));
+    bar.setAttribute("x", barX);
+
+    const indexElement = $indexes[index];
+    const percentageElement = $percentages[index];
+
+    if (indexElement) {
+      indexElement.style.left = `${barX}px`;
+    }
+    if (percentageElement) {
+      percentageElement.style.left = `${barX}px`;
+    }
   });
 }
 
@@ -269,7 +280,7 @@ function clearTestCase(event) {
   const testCase = event.target.closest(".test-case");
   const id = testCase.dataset.id;
   const bar = document.querySelector(`.bar[data-id="${id}"]`);
-  
+
   testCase.querySelector(".code").value = "";
 
   bar.setAttribute("height", 0);

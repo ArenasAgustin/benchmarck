@@ -21,7 +21,7 @@ body {
   width: 100%;
   margin: 0 auto;
   display: flex;
-  gap: 32px;
+  gap: 80px;
   justify-content: center;
   flex-wrap: wrap;
 
@@ -160,9 +160,18 @@ body {
     gap: 32px;
     margin-top: 16px;
     width: 100%;
+    position: relative;
   }
 
   .indexes {
     margin-bottom: 16px;
+  }
+
+  .index,
+  .percentage {
+    position: absolute;
+    top: -16px;
+    transform: translateX(-50%);
+    text-align: center;
   }
 }
