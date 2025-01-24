@@ -85,17 +85,13 @@ async function runTestCases() {
   results.forEach((result, index) => {
     const bar = $bars[index];
     const percentage = $percentages[index];
-
     const ratio =
       sortedResults.findIndex((x) => x.index === index) / (results.length - 1);
-    const color = getGradientColor(ratio);
 
-    const height = (result / maxOps) * 300;
-    bar.setAttribute("height", height);
-    bar.setAttribute("fill", color);
-
-    const percentageValue = Math.round((result / maxOps) * 100);
-    percentage.textContent = `${percentageValue}%`;
+    bar
+      .setAttribute("height", (result / maxOps) * 300)
+      .setAttribute("fill", getGradientColor(ratio));
+    percentage.textContent = `${Math.round((result / maxOps) * 100)}%`;
   });
 }
 
@@ -137,13 +133,12 @@ function adjustChartBars() {
   const barSpacing = 460 / totalBars;
   const chartWidth = 460;
 
-  // Calculate bar width dynamically based on the total number of bars
   const barWidth = (chartWidth - barSpacing * (totalBars - 1)) / totalBars;
 
   $bars.forEach((bar, index) => {
-    const xPosition = index * (barWidth + barSpacing);
-    bar.setAttribute("width", barWidth);
-    bar.setAttribute("x", xPosition);
+    bar
+      .setAttribute("width", barWidth)
+      .setAttribute("x", index * (barWidth + barSpacing));
   });
 }
 
@@ -160,6 +155,15 @@ function addTestCase() {
   newTestCase.querySelector(".test-id").textContent = testCaseCounter;
   newTestCase.querySelector(".code").value = "";
   newTestCase.querySelector(".ops").textContent = "0 ops/s";
+
+  newTestCase
+    .querySelectorAll(".delete-button, .copy-button, .clear-button")
+    .forEach((button) => {
+      button
+        .removeEventListener("click", deleteTestCase)
+        .removeEventListener("click", copyTestCase)
+        .removeEventListener("click", clearTestCase);
+    });
 
   newTestCase
     .querySelector(".delete-button")
@@ -193,6 +197,26 @@ function addTestCase() {
 }
 
 /**
+ * Updates the IDs and content of a list of elements based on their position.
+ * @param {NodeListOf<HTMLElement>} elements - The list of elements to update.
+ */
+function updateIndexes(elements) {
+  elements.forEach((element, index) => {
+    const newId = index + 1;
+    const classList = element.classList;
+
+    element.setAttribute("data-id", newId);
+
+    if (classList.contains("test-case")) {
+      element.dataset.id = newId;
+      element.querySelector(".test-id").textContent = newId;
+    } else if (classList.contains("index")) {
+      element.textContent = newId;
+    }
+  });
+}
+
+/**
  * Deletes a test case and its corresponding chart elements.
  * @param {Event} event - The click event triggered by the delete button.
  */
@@ -209,6 +233,11 @@ function deleteTestCase(event) {
     testCaseCounter--;
     updateGlobalCode();
     adjustChartBars();
+
+    updateIndexes(document.querySelectorAll(".test-case:not(.global)"));
+    updateIndexes($bars);
+    updateIndexes($percentages);
+    updateIndexes($indexes);
   }
 }
 
@@ -217,8 +246,9 @@ function deleteTestCase(event) {
  * @param {Event} event - The click event triggered by the copy button.
  */
 function copyTestCase(event) {
-  const testCase = event.target.closest(".test-case");
-  const codeText = testCase.querySelector(".code").value;
+  const codeText = event.target
+    .closest(".test-case")
+    .querySelector(".code").value;
   window.navigator.clipboard.writeText(codeText);
 }
 
@@ -231,8 +261,7 @@ function clearAllTestCases() {
     .forEach((input) => (input.value = ""));
 
   $bars.forEach((bar) => {
-    bar.setAttribute("height", 0);
-    bar.setAttribute("fill", "#ccc");
+    bar.setAttribute("height", 0).setAttribute("fill", "#ccc");
   });
 
   $percentages.forEach((percentage) => (percentage.textContent = "0%"));
@@ -240,14 +269,13 @@ function clearAllTestCases() {
 
 function clearTestCase(event) {
   const testCase = event.target.closest(".test-case");
-  testCase.querySelector(".code").value = "";
-
   const id = testCase.dataset.id;
-  const bar = document.querySelector(`.bar[data-id="${id}"]`);
 
-  bar.setAttribute("height", 0);
-  bar.setAttribute("fill", "#ccc");
-
+  testCase.querySelector(".code").value = "";
+  document
+    .querySelector(`.bar[data-id="${id}"]`)
+    .setAttribute("height", 0)
+    .setAttribute("fill", "#ccc");
   document.querySelector(`.percentage[data-id="${id}"]`).textContent = "0%";
 }
 
@@ -260,6 +288,11 @@ document.querySelector(".run-button").addEventListener("click", runTestCases);
 // Attach the addTestCase function to the add button
 document.querySelector(".add-button").addEventListener("click", addTestCase);
 
+// Clear all test cases except the first one
+document
+  .querySelector(".clear-all-button")
+  .addEventListener("click", clearAllTestCases);
+
 // Use event delegation for dynamic delete buttons
 document
   .querySelectorAll(".delete-button")
@@ -269,11 +302,6 @@ document
 document
   .querySelectorAll(".copy-button")
   .forEach((button) => button.addEventListener("click", copyTestCase));
-
-// Clear all test cases except the first one
-document
-  .querySelector(".clear-all-button")
-  .addEventListener("click", clearAllTestCases);
 
 // Clear a single test case
 document
