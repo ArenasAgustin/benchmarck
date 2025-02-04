@@ -11,7 +11,7 @@
 
   <body>
     <main class="main-container">
-      <div class="test-container">
+      <section class="test-container">
         <h2>Global</h2>
 
         <article class="test-case global" data-id="global">
@@ -81,20 +81,16 @@
         </div>
 
         <button class="run-button button">Benchmark code!</button>
-      </div>
+      </section>
 
-      <aside class="chart-container">
+      <section class="chart-container">
         <div class="indexes">
           <span class="index" data-id="1" style="left: 0">1</span>
-          <span class="index" data-id="2" style="left: 204.44444444444446px"
-            >2</span
-          >
-          <span class="index" data-id="3" style="left: 408.8888888888889px"
-            >3</span
-          >
+          <span class="index" data-id="2" style="left: 177.778px">2</span>
+          <span class="index" data-id="3" style="left: 355.556px">3</span>
         </div>
 
-        <svg class="chart" viewBox="0 0 460 300">
+        <svg class="chart" viewBox="0 0 400 300">
           <rect
             class="bar"
             data-id="1"
@@ -107,7 +103,7 @@
           <rect
             class="bar"
             data-id="2"
-            x="204.44444444444446"
+            x="177.778"
             y="-300"
             width="1"
             height="50"
@@ -116,7 +112,7 @@
           <rect
             class="bar"
             data-id="3"
-            x="408.8888888888889"
+            x="355.556"
             y="-300"
             width="1"
             height="80"
@@ -126,17 +122,14 @@
 
         <div class="percentages">
           <span class="percentage" data-id="1" style="left: 0">100%</span>
-          <span
-            class="percentage"
-            data-id="2"
-            style="left: 204.44444444444446px"
+          <span class="percentage" data-id="2" style="left: 177.778px"
             >40%</span
           >
-          <span class="percentage" data-id="3" style="left: 408.8888888888889px"
+          <span class="percentage" data-id="3" style="left: 355.556px"
             >60%</span
           >
         </div>
-      </aside>
+      </section>
     </main>
   </body>
 </html>

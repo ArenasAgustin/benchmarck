@@ -129,8 +129,8 @@ function updateGlobalCode() {
  */
 function adjustChartBars() {
   const totalBars = $bars.length;
-  const barSpacing = 460 / totalBars;
-  const chartWidth = 460;
+  const barSpacing = 400 / totalBars + 1;
+  const chartWidth = 400;
   const barWidth = (chartWidth - barSpacing * (totalBars - 1)) / totalBars;
 
   $bars.forEach((bar, index) => {
@@ -294,6 +294,18 @@ runTestCases();
 
 // Re-run test cases when the run button is clicked
 document.querySelector(".run-button").addEventListener("click", runTestCases);
+
+document.addEventListener("keydown", (event) => {
+  // Run tests with Ctrl + Enter
+  if (event.ctrlKey && event.key === "Enter") {
+    runTestCases();
+  }
+
+  // Add new test case with Ctrl + Shift + Enter
+  if (event.ctrlKey && event.shiftKey && event.key === "Enter") {
+    addTestCase();
+  }
+});
 
 // Attach the addTestCase function to the add button
 document.querySelector(".add-button").addEventListener("click", addTestCase);
