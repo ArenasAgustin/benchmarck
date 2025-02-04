@@ -4,6 +4,13 @@
   box-sizing: border-box;
 }
 
+:root {
+  --font-size: 16px;
+  --font-size-small: 12px;
+  --section-gap: 40px;
+  --section-width: 400px;
+}
+
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -15,20 +22,21 @@ body {
   place-content: center;
   min-height: 100vh;
   width: 100%;
+  font-size: var(--font-size);
 }
 
 .main-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: var(--section-gap);
   margin: 0 auto;
   max-width: 100%;
-  width: calc(2 * 400px + 40px);
+  width: calc(2 * var(--section-width) + var(--section-gap));
 
   .test-container,
   .chart-container {
     display: flex;
-    max-width: 400px;
+    max-width: var(--section-width);
     width: 100%;
     box-sizing: border-box;
   }
@@ -108,10 +116,20 @@ body {
   border: 0;
   color: white;
   cursor: pointer;
-  padding: 6px 12px;
+  padding: 3px 4px;
   transition: background 0.3s ease;
   width: fit-content;
   margin-left: 3px;
+  font-size: var(--font-size-small);
+
+  .icon {
+    width: calc(var(--font-size-small) + 2px);
+    height: calc(var(--font-size-small) + 2px);
+  }
+
+  &.text-button {
+    padding: 4px 8px;
+  }
 }
 
 .clear-all-button,
@@ -139,7 +157,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 460px;
+  width: var(--section-width);
 
   .chart {
     width: 100%;
