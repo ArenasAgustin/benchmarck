@@ -14,3 +14,5 @@
 - [X] Hacer que se acomoden bien los test y los porcentajes al ancho de la pantalla
 - [X] Agreagar variables globales de css
 - [ ] Hacer que se tome el ancho del contenedor para calcular la posicion de las barras de porcentaje
+- [X] Mejorar el diseño
+  - [ ] Mejorar el responsive
