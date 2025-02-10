@@ -67,6 +67,13 @@ body {
     }
   }
 
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+
   .button {
     border-radius: var(--raduis-sm);
     border: var(--measures-0);
@@ -78,6 +85,8 @@ body {
     margin-left: var(--measures-4);
     font-size: var(--font-size-sm);
     background: rgba(var(--primary-color-light-base), 0.5);
+    display: flex;
+    align-items: center;
 
     &:hover {
       background: var(--primary-color-light);
@@ -148,7 +157,6 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
-        text-align: center;
         color: var(--secondary-color);
       }
 

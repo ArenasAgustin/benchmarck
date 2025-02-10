@@ -18,41 +18,45 @@
           <header class="header">
             <div class="button-container">
               <button class="copy-button button">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  class="icon"
-                  viewBox="0 0 24 24"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" />
-                  <path
-                    d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"
-                  />
-                  <path
-                    d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2zM9 14l2 2 4-4"
-                  />
-                </svg>
+                <div class="button-text-container">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    class="icon"
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <path
+                      d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"
+                    />
+                    <path
+                      d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2zM9 14l2 2 4-4"
+                    />
+                  </svg>
+                </div>
               </button>
               <button class="clear-button button">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  class="icon"
-                  viewBox="0 0 24 24"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" />
-                  <path
-                    d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"
-                  />
-                </svg>
+                <div class="button-text-container">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    class="icon"
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <path
+                      d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"
+                    />
+                  </svg>
+                </div>
               </button>
             </div>
           </header>
@@ -66,69 +70,79 @@
 
         <div class="test-cases">
           <div class="button-container">
-            <button class="add-button button text-button">Add test</button>
+            <button class="add-button button text-button">
+              <div class="button-text-container">Add test</div>
+            </button>
             <button class="clear-all-button button text-button">
-              Clear tests
+              <div class="button-text-container">Clear tests</div>
             </button>
           </div>
 
           <article class="test-case" data-id="1">
             <header class="header">
-              <span class="test-id">1</span>
+              <span class="test-id"
+                ><div class="id-text-container">1</div></span
+              >
               <span class="ops"></span>
 
               <div class="button-container">
                 <button class="delete-button button">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    class="icon"
-                    viewBox="0 0 24 24"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" />
-                    <path d="M18 6 6 18M6 6l12 12" />
-                  </svg>
+                  <div class="button-text-container">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      class="icon"
+                      viewBox="0 0 24 24"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" />
+                      <path d="M18 6 6 18M6 6l12 12" />
+                    </svg>
+                  </div>
                 </button>
                 <button class="copy-button button">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    class="icon"
-                    viewBox="0 0 24 24"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" />
-                    <path
-                      d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"
-                    />
-                    <path
-                      d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2zM9 14l2 2 4-4"
-                    />
-                  </svg>
+                  <div class="button-text-container">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      class="icon"
+                      viewBox="0 0 24 24"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" />
+                      <path
+                        d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"
+                      />
+                      <path
+                        d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2zM9 14l2 2 4-4"
+                      />
+                    </svg>
+                  </div>
                 </button>
                 <button class="clear-button button">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    class="icon"
-                    viewBox="0 0 24 24"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" />
-                    <path
-                      d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"
-                    />
-                  </svg>
+                  <div class="button-text-container">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      class="icon"
+                      viewBox="0 0 24 24"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" />
+                      <path
+                        d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"
+                      />
+                    </svg>
+                  </div>
                 </button>
               </div>
             </header>
@@ -138,61 +152,69 @@
 
           <article class="test-case" data-id="2">
             <header class="header">
-              <span class="test-id">2</span>
+              <span class="test-id"
+                ><div class="id-text-container">2</div></span
+              >
               <span class="ops"></span>
 
               <div class="button-container">
                 <button class="delete-button button">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    class="icon"
-                    viewBox="0 0 24 24"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" />
-                    <path d="M18 6 6 18M6 6l12 12" />
-                  </svg>
+                  <div class="button-text-container">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      class="icon"
+                      viewBox="0 0 24 24"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" />
+                      <path d="M18 6 6 18M6 6l12 12" />
+                    </svg>
+                  </div>
                 </button>
                 <button class="copy-button button">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    class="icon"
-                    viewBox="0 0 24 24"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" />
-                    <path
-                      d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"
-                    />
-                    <path
-                      d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2zM9 14l2 2 4-4"
-                    />
-                  </svg>
+                  <div class="button-text-container">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      class="icon"
+                      viewBox="0 0 24 24"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" />
+                      <path
+                        d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"
+                      />
+                      <path
+                        d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2zM9 14l2 2 4-4"
+                      />
+                    </svg>
+                  </div>
                 </button>
                 <button class="clear-button button">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    class="icon"
-                    viewBox="0 0 24 24"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" />
-                    <path
-                      d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"
-                    />
-                  </svg>
+                  <div class="button-text-container">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      class="icon"
+                      viewBox="0 0 24 24"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" />
+                      <path
+                        d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"
+                      />
+                    </svg>
+                  </div>
                 </button>
               </div>
             </header>
@@ -202,61 +224,69 @@
 
           <article class="test-case" data-id="3">
             <header class="header">
-              <span class="test-id">3</span>
+              <span class="test-id"
+                ><div class="id-text-container">3</div></span
+              >
               <span class="ops"></span>
 
               <div class="button-container">
                 <button class="delete-button button">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    class="icon"
-                    viewBox="0 0 24 24"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" />
-                    <path d="M18 6 6 18M6 6l12 12" />
-                  </svg>
+                  <div class="button-text-container">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      class="icon"
+                      viewBox="0 0 24 24"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" />
+                      <path d="M18 6 6 18M6 6l12 12" />
+                    </svg>
+                  </div>
                 </button>
                 <button class="copy-button button">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    class="icon"
-                    viewBox="0 0 24 24"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" />
-                    <path
-                      d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"
-                    />
-                    <path
-                      d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2zM9 14l2 2 4-4"
-                    />
-                  </svg>
+                  <div class="button-text-container">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      class="icon"
+                      viewBox="0 0 24 24"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" />
+                      <path
+                        d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"
+                      />
+                      <path
+                        d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2zM9 14l2 2 4-4"
+                      />
+                    </svg>
+                  </div>
                 </button>
                 <button class="clear-button button">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    class="icon"
-                    viewBox="0 0 24 24"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" />
-                    <path
-                      d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"
-                    />
-                  </svg>
+                  <div class="button-text-container">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      class="icon"
+                      viewBox="0 0 24 24"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" />
+                      <path
+                        d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"
+                      />
+                    </svg>
+                  </div>
                 </button>
               </div>
             </header>
@@ -265,7 +295,9 @@
           </article>
         </div>
 
-        <button class="run-button button text-button">Benchmark code</button>
+        <button class="run-button button text-button">
+          <div class="button-text-container">Benchmark code</div>
+        </button>
       </section>
 
       <section class="chart-container">
