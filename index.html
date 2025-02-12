@@ -3,23 +3,154 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="JS Benchmark - Test and compare JavaScript performance efficiently."
+    />
+    <meta
+      name="keywords"
+      content="JavaScript, Benchmark, Performance Testing, JS Speed Test"
+    />
+    <meta name="author" content="Agustín Arenas" />
+    <meta name="robots" content="index, follow" />
+    <meta charset="UTF-8" />
+
+    <!-- Open Graph (OG) for Social Media -->
+    <meta
+      property="og:title"
+      content="JS Benchmark - JavaScript Performance Testing"
+    />
+    <meta
+      property="og:description"
+      content="Compare the performance of JavaScript test cases in real time."
+    />
+    <meta property="og:image" content="js-benchmark.webp" />
+    <meta property="og:url" content="your-website-url.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="JS Benchmark - JavaScript Performance Testing"
+    />
+    <meta
+      name="twitter:description"
+      content="Compare JavaScript performance with an interactive benchmarking tool."
+    />
+    <meta name="twitter:image" content="js-benchmark.webp" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+    <!-- Styles & Scripts -->
     <link rel="stylesheet" href="index.css" />
     <script type="module" src="index.js"></script>
 
-    <title>JS Benchmark</title>
+    <title>JS Benchmark - JavaScript Performance Testing</title>
   </head>
 
   <body>
+    <header class="header-container">
+      <h1 class="text">JavaScript Benchmark Tool</h1>
+      <h3 class="text">
+        Test and compare the performance of JavaScript code snippets.
+      </h3>
+    </header>
+
     <main class="main-container">
       <section class="test-container">
-        <h2 class="text">Global</h2>
+        <h2 class="text">Global Variables</h2>
 
         <article class="test-case global" data-id="global">
           <header class="header">
             <div class="button-container">
-              <button class="copy-button button">
-                <div class="button-text-container">
+              <button class="copy-button button" aria-label="Copy code">
+                <svg
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  class="icon"
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" />
+                  <path
+                    d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"
+                  />
+                  <path
+                    d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2zM9 14l2 2 4-4"
+                  />
+                </svg>
+              </button>
+              <button class="clear-button button" aria-label="Clear code">
+                <svg
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  class="icon"
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" />
+                  <path
+                    d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"
+                  />
+                </svg>
+              </button>
+            </div>
+          </header>
+
+          <textarea id="global" class="code" rows="1">
+  const data = [...Array(1000).keys()]</textarea
+          >
+        </article>
+
+        <h2 class="text">Test Cases</h2>
+
+        <div class="test-cases">
+          <div class="button-container">
+            <button class="add-button button text-button">Add Test</button>
+            <button class="clear-all-button button text-button">
+              Clear tests
+            </button>
+          </div>
+
+          <article class="test-case" data-id="1">
+            <header class="header">
+              <span class="test-id"
+                ><div class="id-text-container">1</div></span
+              >
+              <span class="ops"></span>
+
+              <div class="button-container">
+                <button class="delete-button button" aria-label="Delete test">
                   <svg
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    class="icon"
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <path d="M18 6 6 18M6 6l12 12" />
+                  </svg>
+                </button>
+                <button class="copy-button button" aria-label="Copy test">
+                  <svg
+                    aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     stroke="currentColor"
@@ -37,11 +168,10 @@
                       d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2zM9 14l2 2 4-4"
                     />
                   </svg>
-                </div>
-              </button>
-              <button class="clear-button button">
-                <div class="button-text-container">
+                </button>
+                <button class="clear-button button" aria-label="Clear test">
                   <svg
+                    aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     stroke="currentColor"
@@ -56,93 +186,6 @@
                       d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"
                     />
                   </svg>
-                </div>
-              </button>
-            </div>
-          </header>
-
-          <textarea id="global" class="code" rows="1">
-  const data = [...Array(1000).keys()]</textarea
-          >
-        </article>
-
-        <h2 class="text">Test cases</h2>
-
-        <div class="test-cases">
-          <div class="button-container">
-            <button class="add-button button text-button">
-              <div class="button-text-container">Add test</div>
-            </button>
-            <button class="clear-all-button button text-button">
-              <div class="button-text-container">Clear tests</div>
-            </button>
-          </div>
-
-          <article class="test-case" data-id="1">
-            <header class="header">
-              <span class="test-id"
-                ><div class="id-text-container">1</div></span
-              >
-              <span class="ops"></span>
-
-              <div class="button-container">
-                <button class="delete-button button">
-                  <div class="button-text-container">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      class="icon"
-                      viewBox="0 0 24 24"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" />
-                      <path d="M18 6 6 18M6 6l12 12" />
-                    </svg>
-                  </div>
-                </button>
-                <button class="copy-button button">
-                  <div class="button-text-container">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      class="icon"
-                      viewBox="0 0 24 24"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" />
-                      <path
-                        d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"
-                      />
-                      <path
-                        d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2zM9 14l2 2 4-4"
-                      />
-                    </svg>
-                  </div>
-                </button>
-                <button class="clear-button button">
-                  <div class="button-text-container">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      class="icon"
-                      viewBox="0 0 24 24"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" />
-                      <path
-                        d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"
-                      />
-                    </svg>
-                  </div>
                 </button>
               </div>
             </header>
@@ -158,153 +201,79 @@
               <span class="ops"></span>
 
               <div class="button-container">
-                <button class="delete-button button">
-                  <div class="button-text-container">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      class="icon"
-                      viewBox="0 0 24 24"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" />
-                      <path d="M18 6 6 18M6 6l12 12" />
-                    </svg>
-                  </div>
+                <button class="delete-button button" aria-label="Delete test">
+                  <svg
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    class="icon"
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <path d="M18 6 6 18M6 6l12 12" />
+                  </svg>
                 </button>
-                <button class="copy-button button">
-                  <div class="button-text-container">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      class="icon"
-                      viewBox="0 0 24 24"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" />
-                      <path
-                        d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"
-                      />
-                      <path
-                        d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2zM9 14l2 2 4-4"
-                      />
-                    </svg>
-                  </div>
+                <button class="copy-button button" aria-label="Copy test">
+                  <svg
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    class="icon"
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <path
+                      d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"
+                    />
+                    <path
+                      d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2zM9 14l2 2 4-4"
+                    />
+                  </svg>
                 </button>
-                <button class="clear-button button">
-                  <div class="button-text-container">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      class="icon"
-                      viewBox="0 0 24 24"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" />
-                      <path
-                        d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"
-                      />
-                    </svg>
-                  </div>
+                <button class="clear-button button" aria-label="Clear test">
+                  <svg
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    class="icon"
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <path
+                      d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"
+                    />
+                  </svg>
                 </button>
               </div>
             </header>
 
             <textarea class="code" rows="1">data.find(x => x == 200)</textarea>
           </article>
-
-          <article class="test-case" data-id="3">
-            <header class="header">
-              <span class="test-id"
-                ><div class="id-text-container">3</div></span
-              >
-              <span class="ops"></span>
-
-              <div class="button-container">
-                <button class="delete-button button">
-                  <div class="button-text-container">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      class="icon"
-                      viewBox="0 0 24 24"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" />
-                      <path d="M18 6 6 18M6 6l12 12" />
-                    </svg>
-                  </div>
-                </button>
-                <button class="copy-button button">
-                  <div class="button-text-container">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      class="icon"
-                      viewBox="0 0 24 24"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" />
-                      <path
-                        d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"
-                      />
-                      <path
-                        d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2zM9 14l2 2 4-4"
-                      />
-                    </svg>
-                  </div>
-                </button>
-                <button class="clear-button button">
-                  <div class="button-text-container">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      class="icon"
-                      viewBox="0 0 24 24"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" />
-                      <path
-                        d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"
-                      />
-                    </svg>
-                  </div>
-                </button>
-              </div>
-            </header>
-
-            <textarea class="code" rows="1">data.find(x => x == 400)</textarea>
-          </article>
         </div>
 
-        <button class="run-button button text-button">
-          <div class="button-text-container">Benchmark code</div>
-        </button>
+        <button class="run-button button text-button">Benchmark code</button>
       </section>
 
       <section class="chart-container">
+        <div class="chart-header">
+          <h2 class="text">Performance Chart</h2>
+        </div>
+
         <div class="indexes">
           <span class="index" data-id="1" style="left: 0">1</span>
-          <span class="index" data-id="2" style="left: 177.778px">2</span>
-          <span class="index" data-id="3" style="left: 355.556px">3</span>
+          <span class="index" data-id="3" style="left: 300.5px">2</span>
         </div>
 
         <svg class="chart" viewBox="0 0 400 300">
@@ -320,16 +289,7 @@
           <rect
             class="bar"
             data-id="2"
-            x="177.778"
-            y="-300"
-            width="1"
-            height="50"
-            fill="yellow"
-          ></rect>
-          <rect
-            class="bar"
-            data-id="3"
-            x="355.556"
+            x="300.5"
             y="-300"
             width="1"
             height="80"
@@ -339,14 +299,15 @@
 
         <div class="percentages">
           <span class="percentage" data-id="1" style="left: 0">100%</span>
-          <span class="percentage" data-id="2" style="left: 177.778px"
-            >40%</span
-          >
-          <span class="percentage" data-id="3" style="left: 355.556px"
-            >60%</span
-          >
+          <span class="percentage" data-id="2" style="left: 300.5px">60%</span>
         </div>
       </section>
     </main>
+
+    <footer class="footer-container">
+      <p class="text">
+        &copy; Improvements made based on Midudev's project by ArenasAgustin.
+      </p>
+    </footer>
   </body>
 </html>

@@ -13,7 +13,7 @@
   --section-gap: 3rem;
   --test-gap: 1.125rem;
   --section-width: 400px;
-  --text-opacity: 0.8;
+  --text-opacity: 0.9;
   --raduis-sm: 0.25rem;
   --radius-lg: 0.75rem;
   --measures-0: 0;
@@ -67,13 +67,6 @@ body {
     }
   }
 
-  .button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-  }
-
   .button {
     border-radius: var(--raduis-sm);
     border: var(--measures-0);
@@ -85,8 +78,7 @@ body {
     margin-left: var(--measures-4);
     font-size: var(--font-size-sm);
     background: rgba(var(--primary-color-light-base), 0.5);
-    display: flex;
-    align-items: center;
+    text-align: center;
 
     &:hover {
       background: var(--primary-color-light);
@@ -99,6 +91,23 @@ body {
 
     &.text-button {
       padding: var(--measures-4) var(--measures-8);
+    }
+  }
+
+  .text {
+    opacity: var(--text-opacity);
+  }
+
+  .header-container {
+    margin-bottom: calc(var(--section-gap) * 2);
+  }
+
+  .footer-container {
+    margin-top: calc(var(--section-gap) * 2);
+    text-align: center;
+
+    .text {
+      font-size: var(--font-size-xs);
     }
   }
 }
@@ -114,7 +123,6 @@ body {
     font-weight: 500;
     margin: var(--measures-0);
     padding: var(--measures-0);
-    opacity: var(--text-opacity);
   }
 
   .code {
@@ -180,6 +188,25 @@ body {
   align-items: center;
   justify-content: center;
   width: var(--section-width);
+  position: relative;
+  padding-top: calc(var(--font-size-sm) + var(--test-gap));
+
+  .chart-header {
+    position: absolute;
+    top: var(--measures-0);
+    left: var(--measures-0);
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    gap: var(--section-gap);
+
+    .text {
+      font-size: var(--font-size-sm);
+      font-weight: 500;
+      margin: var(--measures-0);
+      padding: var(--measures-0);
+    }
+  }
 
   .chart {
     width: 100%;
@@ -201,6 +228,15 @@ body {
     gap: var(--section-gap);
     width: 100%;
     position: relative;
+    height: var(--measures-20);
+  }
+
+  .indexes {
+    margin-bottom: var(--test-gap);
+  }
+
+  .percentages {
+    margin-top: var(--test-gap);
   }
 
   .index,
@@ -208,13 +244,5 @@ body {
     position: absolute;
     transform: translateX(-50%);
     text-align: center;
-  }
-
-  .percentage {
-    top: var(--test-gap);
-  }
-
-  .index {
-    bottom: var(--test-gap);
   }
 }
