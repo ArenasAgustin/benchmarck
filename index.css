@@ -96,6 +96,17 @@ body {
 
   .text {
     opacity: var(--text-opacity);
+
+    .link {
+      color: var(--secondary-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+      opacity: 1;
+
+      &:hover {
+        color: var(--secondary-color-dark);
+      }
+    }
   }
 
   .header-container {
