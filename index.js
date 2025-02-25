@@ -1,13 +1,22 @@
 // DOM Element Selectors
 const $globalCode = document.querySelector("#global");
-let $bars = document.querySelectorAll(".bar");
-let $percentages = document.querySelectorAll(".percentage");
-let $indexes = document.querySelectorAll(".index");
+let $testCases = document.querySelectorAll(
+  ".test-case:not(.global):not(.hidden)"
+);
+let $bars = document.querySelectorAll(".bar:not(.hidden)");
+let $percentages = document.querySelectorAll(".percentage:not(.hidden)");
+let $indexes = document.querySelectorAll(".index:not(.hidden)");
 
 // Variables
-let testCaseCounter = document.querySelectorAll(
-  ".test-case:not(.global)"
+let $testCaseCounter = document.querySelectorAll(
+  ".test-case:not(.global):not(.hidden)"
 ).length;
+
+// Base HTML elements for cloning
+const baseHtmlTest = document.querySelector(".test-case.hidden");
+const baseHtmlBar = document.querySelector(".bar.hidden");
+const baseHtmlPercentage = document.querySelector(".percentage.hidden");
+const baseHtmlIndex = document.querySelector(".index.hidden");
 
 /**
  * Generates a color in the gradient from green to red based on a given ratio.
@@ -57,8 +66,6 @@ async function runTest({ code, data }) {
  * Executes all test cases, updates the chart, and displays the results.
  */
 async function runTestCases() {
-  const $testCases = document.querySelectorAll(".test-case:not(.global)");
-
   $bars.forEach((bar) => bar.setAttribute("height", 0));
   $percentages.forEach((percentage) => (percentage.textContent = ""));
 
@@ -85,32 +92,50 @@ async function runTestCases() {
   results.forEach((result, index) => {
     const bar = $bars[index];
     const percentage = $percentages[index];
-    const ratio =
-      sortedResults.findIndex((x) => x.index === index) / (results.length - 1);
+
+    if (results.length === 1) {
+      bar.setAttribute("fill", "rgb(0, 255, 0)");
+    } else {
+      const ratio =
+        sortedResults.findIndex((x) => x.index === index) /
+        (results.length - 1);
+      bar.setAttribute("fill", getGradientColor(ratio));
+    }
 
     bar.setAttribute("height", (result / maxOps) * 300);
-    bar.setAttribute("fill", getGradientColor(ratio));
     percentage.textContent = `${Math.round((result / maxOps) * 100)}%`;
   });
 }
 
 /**
  * Clones and resets an element with a unique ID.
- * @param {HTMLElement} element - The element to clone.
  * @param {number} newId - The new unique ID for the element.
  * @returns {HTMLElement} - The cloned and reset element.
  */
-function cloneAndResetElement(element, newId) {
-  const newElement = element.cloneNode(true);
+function cloneAndResetElement(newId, type) {
+  let aux = null;
+
+  if (type === "bar") {
+    aux = baseHtmlBar;
+  } else if (type === "percentage") {
+    aux = baseHtmlPercentage;
+  } else {
+    aux = baseHtmlIndex;
+  }
+
+  const newElement = aux.cloneNode(true);
+
   newElement.setAttribute("data-id", newId);
 
-  if (element.classList.contains("bar")) {
+  if (type === "bar") {
     newElement.setAttribute("height", 0);
-  } else if (element.classList.contains("percentage")) {
+  } else if (type === "percentage") {
     newElement.textContent = "0%";
-  } else if (element.classList.contains("index")) {
+  } else {
     newElement.textContent = newId;
   }
+
+  newElement.classList.remove("hidden");
 
   return newElement;
 }
@@ -119,9 +144,12 @@ function cloneAndResetElement(element, newId) {
  * Updates the global variables for bars and percentages.
  */
 function updateGlobalCode() {
-  $bars = document.querySelectorAll(".bar");
-  $percentages = document.querySelectorAll(".percentage");
-  $indexes = document.querySelectorAll(".index");
+  $testCases = document.querySelectorAll(
+    ".test-case:not(.global):not(.hidden)"
+  );
+  $bars = document.querySelectorAll(".bar:not(.hidden)");
+  $percentages = document.querySelectorAll(".percentage:not(.hidden)");
+  $indexes = document.querySelectorAll(".index:not(.hidden)");
 }
 
 /**
@@ -154,24 +182,18 @@ function adjustChartBars() {
 /**
  * Adds a new test case with unique identifiers and resets its values.
  */
-function addTestCase() {
-  const testCases = document.querySelectorAll(".test-case");
-  const lastTestCase = testCases[testCases.length - 1];
-  testCaseCounter++;
+function addTestCase(code = "") {
+  let newTestCase = null;
+  $testCaseCounter++;
 
-  const newTestCase = lastTestCase.cloneNode(true);
-  newTestCase.dataset.id = testCaseCounter;
-  newTestCase.querySelector(".test-id").textContent = testCaseCounter;
-  newTestCase.querySelector(".code").value = "";
+  newTestCase = baseHtmlTest.cloneNode(true);
+
+  newTestCase.classList.remove("hidden");
+
+  newTestCase.dataset.id = $testCaseCounter;
+  newTestCase.querySelector(".test-id").textContent = $testCaseCounter;
+  newTestCase.querySelector(".code").value = code;
   newTestCase.querySelector(".ops").textContent = "0 ops/s";
-
-  newTestCase
-    .querySelectorAll(".delete-button, .copy-button, .clear-button")
-    .forEach((button) => {
-      button.removeEventListener("click", deleteTestCase);
-      button.removeEventListener("click", copyTestCase);
-      button.removeEventListener("click", clearTestCase);
-    });
 
   newTestCase
     .querySelector(".delete-button")
@@ -182,23 +204,22 @@ function addTestCase() {
   newTestCase
     .querySelector(".clear-button")
     .addEventListener("click", clearTestCase);
+  newTestCase
+    .querySelector(".code")
+    .addEventListener("focusout", updateURLWithTests);
 
-  lastTestCase.after(newTestCase);
+  document.querySelector(".test-cases").appendChild(newTestCase);
 
   const deleteButton = newTestCase.querySelector(".delete-button");
   deleteButton.addEventListener("click", deleteTestCase);
 
-  const lastBar = $bars[$bars.length - 1];
-  const lastPercentage = $percentages[$percentages.length - 1];
-  const lastIndex = $indexes[$indexes.length - 1];
+  const newBar = cloneAndResetElement($testCaseCounter, "bar");
+  const newPercentage = cloneAndResetElement($testCaseCounter, "percentage");
+  const newIndex = cloneAndResetElement($testCaseCounter, "index");
 
-  const newBar = cloneAndResetElement(lastBar, testCaseCounter);
-  const newPercentage = cloneAndResetElement(lastPercentage, testCaseCounter);
-  const newIndex = cloneAndResetElement(lastIndex, testCaseCounter);
-
-  lastBar.after(newBar);
-  lastPercentage.after(newPercentage);
-  lastIndex.after(newIndex);
+  document.querySelector(".chart").appendChild(newBar);
+  document.querySelector(".percentages").appendChild(newPercentage);
+  document.querySelector(".indexes").appendChild(newIndex);
 
   updateGlobalCode();
   adjustChartBars();
@@ -229,24 +250,49 @@ function updateIndexes(elements) {
  * @param {Event} event - The click event triggered by the delete button.
  */
 function deleteTestCase(event) {
-  if (testCaseCounter > 1) {
-    const testCase = event.target.closest(".test-case");
+  if ($testCaseCounter > 1) {
+    const testCase = event.target.closest(".test-case:not(.hidden)");
+    const id = testCase.dataset.id;
+
     testCase.remove();
 
-    const id = testCase.dataset.id;
     document.querySelector(`.bar[data-id="${id}"]`).remove();
     document.querySelector(`.percentage[data-id="${id}"]`).remove();
     document.querySelector(`.index[data-id="${id}"]`).remove();
 
-    testCaseCounter--;
+    $testCaseCounter--;
+
     updateGlobalCode();
     adjustChartBars();
 
-    updateIndexes(document.querySelectorAll(".test-case:not(.global)"));
+    updateIndexes($testCases);
     updateIndexes($bars);
     updateIndexes($percentages);
     updateIndexes($indexes);
+
+    updateURLWithTests();
   }
+}
+
+/**
+ * Deletes all test cases except the global one.
+ */
+function deleteAllTestCases() {
+  document
+    .querySelectorAll(".test-case:not(.global):not(.hidden)")
+    .forEach((testCase) => testCase.remove());
+
+  document.querySelectorAll(".bar:not(.hidden)").forEach((bar) => bar.remove());
+
+  document
+    .querySelectorAll(".percentage:not(.hidden)")
+    .forEach((percentage) => percentage.remove());
+
+  document
+    .querySelectorAll(".index:not(.hidden)")
+    .forEach((index) => index.remove());
+
+  $testCaseCounter = 0;
 }
 
 /**
@@ -255,7 +301,7 @@ function deleteTestCase(event) {
  */
 function copyTestCase(event) {
   const codeText = event.target
-    .closest(".test-case")
+    .closest(".test-case:not(.hidden)")
     .querySelector(".code").value;
   window.navigator.clipboard.writeText(codeText);
 }
@@ -265,7 +311,7 @@ function copyTestCase(event) {
  */
 function clearAllTestCases() {
   document
-    .querySelectorAll(".test-case .code")
+    .querySelectorAll(".test-case:not(.global):not(.hidden) .code")
     .forEach((input) => (input.value = ""));
 
   $bars.forEach((bar) => {
@@ -274,10 +320,19 @@ function clearAllTestCases() {
   });
 
   $percentages.forEach((percentage) => (percentage.textContent = "0%"));
+
+  history.replaceState(
+    null,
+    "",
+    `${window.location.origin}${window.location.pathname}`
+  );
 }
 
+/**
+ * Clears the code from a test case and resets its corresponding chart element.
+ */
 function clearTestCase(event) {
-  const testCase = event.target.closest(".test-case");
+  const testCase = event.target.closest(".test-case:not(.hidden)");
   const id = testCase.dataset.id;
   const bar = document.querySelector(`.bar[data-id="${id}"]`);
 
@@ -287,14 +342,68 @@ function clearTestCase(event) {
   bar.setAttribute("fill", "#ccc");
 
   document.querySelector(`.percentage[data-id="${id}"]`).textContent = "0%";
+
+  updateURLWithTests();
 }
 
-// Initialize test cases on page load
-runTestCases();
+/**
+ * Parses the URL to extract test data and updates the page accordingly.
+ */
+function updateURLWithTests() {
+  const testCases = [
+    ...document.querySelectorAll(".test-case:not(.hidden) .code"),
+  ].map((code) => btoa(code.value));
+
+  const newURL = `${window.location.origin}${
+    window.location.pathname
+  }?data=${testCases.join("|")}`;
+
+  history.replaceState(null, "", newURL);
+}
+
+/**
+ * Loads test data from the URL and updates the page accordingly.
+ */
+function loadTestsFromURL() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const encodedData = urlParams.get("data");
+
+  if (!encodedData) return;
+
+  try {
+    const decodedData = encodedData.split("|").map((test) => atob(test));
+
+    deleteAllTestCases();
+
+    document.querySelector(".test-case:not(.hidden) .code").value =
+      decodedData.shift();
+
+    decodedData.forEach((test) => {
+      addTestCase(test);
+    });
+  } catch (error) {
+    console.error("Error decoding test data:", error);
+  }
+}
+
+/**
+ * Initializes the page by loading test data from the URL and running test cases.
+ */
+function documentLoaded() {
+  // Load test data from the URL on page load
+  loadTestsFromURL();
+
+  // Initialize test cases on page load
+  runTestCases();
+}
+
+// Run the documentLoaded function when the DOM is ready
+window.addEventListener("DOMContentLoaded", documentLoaded);
 
 // Re-run test cases when the run button is clicked
 document.querySelector(".run-button").addEventListener("click", runTestCases);
 
+// Run tests when key combinations are pressed
 document.addEventListener("keydown", (event) => {
   // Run tests with Ctrl + Enter
   if (event.ctrlKey && event.key === "Enter") {
@@ -308,7 +417,9 @@ document.addEventListener("keydown", (event) => {
 });
 
 // Attach the addTestCase function to the add button
-document.querySelector(".add-button").addEventListener("click", addTestCase);
+document
+  .querySelector(".add-button")
+  .addEventListener("click", () => addTestCase());
 
 // Clear all test cases except the first one
 document
@@ -329,3 +440,8 @@ document
 document
   .querySelectorAll(".clear-button")
   .forEach((button) => button.addEventListener("click", clearTestCase));
+
+// Update the code when it changes
+document
+  .querySelectorAll(".code")
+  .forEach((code) => code.addEventListener("focusout", updateURLWithTests));

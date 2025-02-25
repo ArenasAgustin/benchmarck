@@ -15,4 +15,7 @@
 - [X] Agreagar variables globales de css
 - [ ] Hacer que se tome el ancho del contenedor para calcular la posicion de las barras de porcentaje
 - [X] Mejorar el diseño
-  - [ ] Mejorar el responsive
+- [ ] Mejorar el responsive
+- [X] Agregar que se puedan compartir los test mediante la url
+- [X] Agregar que se puedan importar los test mediante la url
+- [ ] Agregar un modal con consejos y los atajos de teclado

@@ -121,6 +121,10 @@ body {
       font-size: var(--font-size-xs);
     }
   }
+
+  .hidden {
+    display: none !important;
+  }
 }
 
 /* Tests */
